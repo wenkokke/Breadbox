@@ -53,3 +53,5 @@ coverage.xml
 docs/_build/
 
 data
+/db.sqlite3
+/semantic_space/data
