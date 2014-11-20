@@ -22,10 +22,10 @@ class Breadbox(object):
     """
 
     def __init__(self, semantic_space):
-        self.names = Breadbox.setup_names()
-        self.semantic_space = semantic_space
-        self.secret = self.semantic_space.get_random_word()._getvalue()
-        self.current_guess = 'breadbox'
+        self.names             = Breadbox.setup_names()
+        self.semantic_space    = semantic_space
+        self.secret            = self.semantic_space.get_random_word()._getvalue()
+        self.current_guess     = 'breadbox'
         self.current_guess_sim = self.semantic_space.get_sim(
             self.current_guess, self.secret)._getvalue()
 
@@ -35,7 +35,6 @@ class Breadbox(object):
         Start the game.
         """
         self.say('Computer', "I'm thinking of something...")
-        self.say('Computer', "(Pst! It's a '%s'!)" % self.secret)
         self.say('Player', "Is it a breadbox?")
         self.say('Computer', "No, it's not.")
         while True:
@@ -97,7 +96,6 @@ class Breadbox(object):
         # or if new_guess is closer or further away than the current guess.
         new_guess = new_guess.lower()
         new_guess_sim = self.semantic_space.get_sim(new_guess, self.secret)._getvalue()
-        print(new_guess, new_guess_sim)
 
         if new_guess == self.secret:
             return Reply.ExactlyEqual

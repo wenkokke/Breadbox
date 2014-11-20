@@ -44,7 +44,9 @@ class SemanticSpace(object):
         """
         Return a random word from the corpus.
         """
-        return choice(self.words)
+        word = choice(self.words)
+        print "Chose %s" % word
+        return word
 
     def get_sim(self, word1, word2):
         """
@@ -74,6 +76,5 @@ if __name__ == '__main__':
     manager = SemanticSpaceManager(address=address, authkey=authkey)
 
     server = manager.get_server()
+    print "Server started."
     server.serve_forever()
-
-    print "Done."
