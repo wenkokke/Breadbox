@@ -73,5 +73,5 @@ future... but I think I'll do that when I have a server to run it on.
 ---
 
 
-Thanks to [UnicornPower](github.com/UnicornPower) for introducing me
+Thanks to [UnicornPower](https://github.com/UnicornPower) for introducing me
 to the game! :)
