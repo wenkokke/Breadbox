@@ -8,7 +8,7 @@ players, which we'll call Allie and Blake:
 
   - For the first question, Blake asks *"Is it a breadbox?"*
 
-  - Allie---who obviously wouldn't choose a breadbox---answers *"No, it
+  - Allie—who obviously wouldn't choose a breadbox—answers *"No, it
     isn't!"*
 
 From then on, all Blake's questions have to be of the form *"Is it more
@@ -41,20 +41,23 @@ typical game will look like this:
     Allie: That's exactly what I was thinking of!
 
 
-# Installing
+# Install & Run
 
 To run it, you need
 [dissect](https://github.com/composes-toolkit/dissect/) from the
 COMPOSES toolkit, and [names](https://pypi.python.org/pypi/names/).
 
-When you have these, clone the repository and run `make`.
+When you have these, clone the repository and run:
+
+    make
+
+This will take a while, since you'll be downloading a large set of
+semantic vectors.
 
 
-# Running
-
-To run an instance of 'breadbox' it is important to first start the
-server---because you don't want to load several gigabytes of data for
-every run of the game.
+When it's done, you can run the game! It's important to start the
+server first, because you don't want to load several gigabytes of data
+for every run of the game:
 
     python semantic_space/semantic_space.py
 
@@ -63,9 +66,8 @@ command-line using:
 
     python cli/main.py
 
-I hope to make a web interface in the future, but I don't have a
-server where I can run a several gigabyte consuming process right
-now.
+I should really fix the mess that the game interface is in the
+future... but I think I'll do that when I have a server to run it on.
 
 
 ---
