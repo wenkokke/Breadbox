@@ -119,6 +119,10 @@ def play():
         say(Player , "Is it more like {} or more like ".format(a(next_guess)), end='')
         prev_guess     = next_guess
         next_guess     = input().strip().rstrip('?').lower()
+        if next_guess.startswith('a '):
+            next_guess = next_guess[2:]
+        if next_guess.startswith('an '):
+            next_guess = next_guess[3:]
         print(end="\033[F")
         say(Player , "Is it more like {} or more like {}?".format(a(prev_guess),a(next_guess)))
         prev_guess_sim = next_guess_sim
