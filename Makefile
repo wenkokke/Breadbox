@@ -29,6 +29,6 @@ serve: $(DATA_PKL_NOUN)
 	@python -c "import main; main.serve('$(DATA_PKL_NOUN)')"
 
 play:
-	python -c "import main; main.play()"
+	@python -c "import main; main.play()"
 
 .phony: build dependencies serve play
