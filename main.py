@@ -76,7 +76,9 @@ def serve(ifile):
 
 
 def a(word):
-    if startswith_vowel(word):
+    if 'i give up'  == word:
+        return 'I give up'
+    elif startswith_vowel(word):
         return "an "+word
     else:
         return "a "+word
@@ -105,44 +107,49 @@ def play():
     manager.connect()
 
     secret         = manager.get_random_word()._getvalue()
-    curr_guess     = 'breadbox'
-    curr_guess_sim = manager.get_sim(curr_guess,secret)
+    next_guess     = 'breadbox'
+    next_guess_sim = manager.get_sim(next_guess,secret)
 
     say(Computer , "I'm thinking of something!")
     say(Player   , "Is it a breadbox?")
     say(Computer , "No, it's not.")
+
     while True:
 
-        # ask for guess
-        say(Player   , "Is it more like {} or more like a ".format(a(curr_guess)), end='')
-        prev_guess     = curr_guess
-        curr_guess     = input().strip().rstrip('?').lower()
+        say(Player , "Is it more like {} or more like ".format(a(next_guess)), end='')
+        prev_guess     = next_guess
+        next_guess     = input().strip().rstrip('?').lower()
         print(end="\033[F")
-        say(Player   , "Is it more like {} or more like {}?".format(a(prev_guess),a(curr_guess)))
-        prev_guess_sim = curr_guess_sim
-        curr_guess_sim = manager.get_sim(curr_guess,secret)
+        say(Player , "Is it more like {} or more like {}?".format(a(prev_guess),a(next_guess)))
+        prev_guess_sim = next_guess_sim
+        next_guess_sim = manager.get_sim(next_guess,secret)
 
-        # print(prev_guess,prev_guess_sim,curr_guess,curr_guess_sim,sep='; ')
+        if 'i give up' == next_guess:
+            say(Computer, "I was thinking of %s!" % secret)
+            for synset in wn.synsets(secret):
+                if synset.name().startswith(secret + '.n.'):
+                    say(Computer, "It's %s!" % synset.definition())
+            break
 
-        if ' ' in curr_guess:
-            curr_guess     = prev_guess
-            curr_guess_sim = prev_guess_sim
+        if ' ' in next_guess:
+            next_guess     = prev_guess
+            next_guess_sim = prev_guess_sim
             say(Computer, "I have to warn you, compound nouns scare me a little...")
             say(Computer, "Try to avoid words with spaces in them.")
 
-        elif curr_guess == secret:
+        elif next_guess == secret:
             say(Computer, "That's exactly what I was thinking of!")
             break
 
-        elif curr_guess_sim > prev_guess_sim:
-            say(Computer, "It's more like a %s..." % curr_guess)
+        elif next_guess_sim > prev_guess_sim:
+            say(Computer, "It's more like a %s..." % next_guess)
 
-        elif curr_guess_sim == prev_guess_sim:
-            curr_guess     = prev_guess
-            curr_guess_sim = prev_guess_sim
+        elif next_guess_sim == prev_guess_sim:
+            next_guess     = prev_guess
+            next_guess_sim = prev_guess_sim
             say(Computer, "Eh. They're about equally like the thing I'm thinking of...")
 
-        elif curr_guess_sim < prev_guess_sim:
-            curr_guess     = prev_guess
-            curr_guess_sim = prev_guess_sim
-            say(Computer, "It's more like a %s..." % curr_guess)
+        elif next_guess_sim < prev_guess_sim:
+            next_guess     = prev_guess
+            next_guess_sim = prev_guess_sim
+            say(Computer, "It's more like a %s..." % next_guess)
