@@ -56,3 +56,4 @@ data
 /db.sqlite3
 /semantic_space/data
 .DS_Store
+depr/

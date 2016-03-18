@@ -43,35 +43,28 @@ typical game will look like this:
 
 # Install & Run
 
-To run it, you need
-[dissect](https://github.com/composes-toolkit/dissect/) from the
-COMPOSES toolkit, and [names](https://pypi.python.org/pypi/names/).
+To build 'Breadbox' and install the dependencies, run
 
-When you have these, clone the repository and run:
-
-    make
+    make dependencies
+    make build
 
 This will take a while, since you'll be downloading a large set of
-semantic vectors.
+semantic vectors. When it's done, you can run the game! It's important
+to start the server first, because you don't want to load several
+gigabytes of data for every run of the game:
 
-
-When it's done, you can run the game! It's important to start the
-server first, because you don't want to load several gigabytes of data
-for every run of the game:
-
-    python semantic_space/semantic_space.py
+    make serve
 
 When the server has started, you can run the game from the
 command-line using:
 
-    python cli/main.py
+    make play
 
-I should really fix the mess that the game interface is in the
-future... but I think I'll do that when I have a server to run it on.
-
+Fairly soon I'll probably implement a small server, so that I can run
+an example of it online.
 
 ---
 
 
-Thanks to [UnicornPower](https://github.com/UnicornPower) for introducing me
-to the game! :)
+Thanks to [UnicornPower](https://github.com/UnicornPower) for
+introducing me to the game! :)
