@@ -12,11 +12,6 @@ app = Flask(__name__)
 app.config.from_pyfile('flaskapp.cfg')
 
 
-@app.route('/')
-def index():
-    return "<strong>It's Alive!</strong>"
-
-
 @app.route('/generate/secret')
 def generate_secret():
     secret = choice(dat.id2row)
@@ -37,6 +32,11 @@ def startswith_vowel(this):
     for syllables in cm.dict().get(this,[]):
         return str(syllables[0][-1].isdigit())
     return str(False)
+
+
+@app.route('/test')
+def index():
+    return "<strong>It's Alive!</strong>"
 
 
 if __name__ == '__main__':
