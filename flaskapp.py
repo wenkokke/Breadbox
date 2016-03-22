@@ -14,7 +14,7 @@ from nltk.corpus                   import cmudict as cm
 
 
 sim = CosSimilarity()
-dat = io_utils.load('data.pkl')
+dat = io_utils.load('corpora/composes.pkl')
 app = Flask(__name__)
 app.config.from_pyfile('flaskapp.cfg')
 
