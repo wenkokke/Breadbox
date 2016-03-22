@@ -1,1 +1,4 @@
+#!/bin/bash
 export NLTK_DATA=OPENSHIFT_DATA_DIR
+python -c "import nltk; nltk.download('wordnet')"
+python -c "import nltk; nltk.download('cmudict')"
