@@ -1,7 +1,8 @@
 import os
+from random   import random
 from datetime import datetime
-from flask import Flask, request, flash, url_for, redirect, \
-     render_template, abort, send_from_directory
+from flask    import Flask, request, flash, url_for, redirect, \
+                     render_template, abort, send_from_directory
 
 app = Flask(__name__)
 app.config.from_pyfile('flaskapp.cfg')
@@ -19,4 +20,4 @@ def test():
     return "<strong>It's Alive!</strong>"
 
 if __name__ == '__main__':
-    app.run(app.config['IP'], app.config['PORT'])
+    app.run()

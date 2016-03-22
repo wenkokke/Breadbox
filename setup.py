@@ -6,13 +6,14 @@ setup(name='Breadbox',
       author='Pepijn Kokke',
       author_email='pepijnkokke@gmail.com',
       url='http://www.python.org/sigs/distutils-sig/',
-      install_requires=['Flask>=0.10.1'
-                       ,'future'
-                       ,'names'
-                       ,'enum'
-                       ,'numpy'
-                       ,'scipy'
-                       ,'cython'
-                       ,'sparsesvd'
-                       ,'dissect'
-                       ,'nltk'])
+      install_requires=[
+          'Flask>=0.10.1'
+          ,'future'
+          ,'names'
+          ,'enum'
+          ,'numpy'
+          ,'scipy'
+          ,'cython'
+          ,'sparsesvd'
+          ,'dissect'
+          ,'nltk'])
