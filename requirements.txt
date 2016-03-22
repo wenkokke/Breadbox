@@ -1,0 +1,10 @@
+Flask=0.10.1
+future
+names
+enum
+numpy
+scipy
+cython
+sparsesvd
+https://github.com/composes-toolkit/dissect/archive/master.zip
+nltk
