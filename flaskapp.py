@@ -18,7 +18,11 @@ def index():
 @app.route('/generate/secret')
 def generate_secret():
     secret = choice(dat.id2row)
-    return secret + wn.synsets(secret)
+    output = [secret]
+    for synset in wn.synsets(secret):
+        if synset.name().startswith(secret+'.n.'):
+            output.append("It's " + synset.definition() + ".")
+    return '<br />'.join(output)
 
 
 if __name__ == '__main__':
