@@ -3,7 +3,7 @@ from composes.similarity.cos       import CosSimilarity
 from composes.utils                import io_utils
 from flask                         import Flask
 from random                        import choice
-
+from nltk.corpus                   import wordnet as wn
 
 dat = io_utils.load('data.pkl')
 app = Flask(__name__)
@@ -17,7 +17,8 @@ def index():
 
 @app.route('/generate/secret')
 def generate_secret():
-    return choice(dat.id2row)
+    secret = choice(dat.id2row)
+    return secret + wn.synsets(secret)
 
 
 if __name__ == '__main__':

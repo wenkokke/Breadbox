@@ -7,6 +7,7 @@ class Install(_install):
         _install.do_egg_install(self)
         import nltk
         nltk.download('wordnet')
+        nltk.download('cmudict')
 
 
 setup(name='Breadbox',
