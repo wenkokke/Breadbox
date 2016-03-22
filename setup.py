@@ -14,5 +14,5 @@ setup(name='FlaskApp',
                        ,'scipy'
                        ,'cython'
                        ,'sparsesvd'
-                       ,'dissect==0.1.0'
-                       ,'nltk>=3.2'])
+                       ,'dissect'
+                       ,'nltk'])
