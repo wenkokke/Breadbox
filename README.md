@@ -1,24 +1,70 @@
-# A basic Flask quickstart 
-*With support for serving easy APIs and static content*
+# Breadbox
 
-[![Build Status](http://img.shields.io/travis/ryanj/flask-base.svg)](https://travis-ci.org/ryanj/flask-base) [![Deploy](https://img.shields.io/badge/Launch_on-OpenShift-brightgreen.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=python-2&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Fflask-base.git&name=flask)
+'Breadbox' is an implementation of the game 'Plenty Questions', which
+is a variant of the "popular" game '20 Questions'. The game has two
+players, which we'll call Allie and Blake:
 
-[![Launch on OpenShift](http://launch-shifter.rhcloud.com/button.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=python-2.7&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Fflask-base.git&name=flask)
+  - Allie thinks of something
 
-To deploy a clone of this application using the [`rhc` command line tool](http://rubygems.org/gems/rhc):
+  - For the first question, Blake asks *"Is it a breadbox?"*
 
-    rhc app create flask python-2.7 --from-code=https://github.com/ryanj/flask-base.git
-    
-Or [link to a web-based clone+deploy](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=python-2.7&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Fflask-base.git) on [OpenShift Online](http://OpenShift.com) or on [your own OpenShift cloud](http://openshift.github.io): 
+  - Allie—who obviously wouldn't choose a breadbox—answers *"No, it
+    isn't!"*
 
-    https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=python-2.7&initial_git_url=https%3A%2F%2Fgithub.com%2Fryanj%2Fflask-base.git
+From then on, all Blake's questions have to be of the form *"Is it more
+like a breadbox or more like a _____?"*
+If it is, then whatever Blake tried will replace the breadbox in that
+question. If it isn't, then we'll keep stick with the breadbox. A
+typical game will look like this:
 
-## Local server
-Start a local webserver by running:
 
-```bash
-python app.py
-```
+    Allie: I'm thinking of something...
+    Blake: Is it a breadbox?
+    Allie: No, it's not.
+    Blake: Is it more like a breadbox or more like a dog?
+    Allie: It's more like a dog...
+    Blake: Is it more like a dog or more like a cat?
+    Allie: It's more like a cat...
+    Blake: Is it more like a cat or more like a unicorn?
+    Allie: It's more like a cat...
+    Blake: Is it more like a cat or more like a garden?
+    Allie: It's more like a garden...
+    Blake: Is it more like a garden or more like a house?
+    Allie: It's more like a house...
+    Blake: Is it more like a house or more like a friend?
+    Allie: It's more like a friend...
+    Blake: Is it more like a friend or more like a lover?
+    Allie: It's more like a friend...
+    Blake: Is it more like a friend or more like a relative?
+    Allie: It's more like a friend...
+    Blake: Is it more like a friend or more like a neighbour?
+    Allie: That's exactly what I was thinking of!
 
-## License
-This code is dedicated to the public domain to the maximum extent permitted by applicable law, pursuant to CC0 (http://creativecommons.org/publicdomain/zero/1.0/)
+
+# Install & Run
+
+To build 'Breadbox' and install the dependencies, run
+
+    make dependencies
+    make build
+
+This will take a while, since you'll be downloading a large set of
+semantic vectors. When it's done, you can run the game! It's important
+to start the server first, because you don't want to load several
+gigabytes of data for every run of the game:
+
+    make serve
+
+When the server has started, you can run the game from the
+command-line using:
+
+    make play
+
+Fairly soon I'll probably implement a small server, so that I can run
+an example of it online.
+
+---
+
+
+Thanks to [UnicornPower](https://github.com/UnicornPower) for
+introducing me to the game! :)
