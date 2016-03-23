@@ -124,7 +124,7 @@ function help() {
     addLine("&nbsp;&nbsp;&nbsp;&nbsp;Is it more like a <i>breadbox</i>, "+
             "or more like...?",'margin','white');
     addLine("&nbsp;");
-    addLine("...where <i>breadbox</i> replaced with is whatever your current guess is.",
+    addLine("...where <i>breadbox</i> is replaced with whatever your current guess is.",
             'margin','blue');
     addLine("&nbsp;");
     addLine("And remember, you can always type 'give up', and I'll tell you what I "+
