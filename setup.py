@@ -7,7 +7,6 @@ class Install(_install):
         _install.do_egg_install(self)
         import nltk
         nltk.download('wordnet')
-        nltk.download('cmudict')
 
 
 setup(name='Breadbox',
@@ -17,6 +16,6 @@ setup(name='Breadbox',
       author_email     ='pepijn.kokke@gmail.com',
       url              ='http://www.python.org/sigs/distutils-sig/',
       cmdclass         ={'install': Install},
-      install_requires =['Flask>=0.10.1','future','names','enum','numpy'
-                        ,'scipy','cython','sparsesvd','dissect','nltk'],
+      install_requires =['Flask>=0.10.1','future','names','enum','numpy','scipy'
+                         ,'cython','sparsesvd','dissect','nltk','inflect'],
       setup_requires   =['nltk'])

@@ -8,3 +8,4 @@ cython
 sparsesvd
 https://github.com/composes-toolkit/dissect/archive/master.zip
 nltk
+inflect
