@@ -1,114 +1,118 @@
 .cssConsole {
-font-size: 17px;
-position:relative;
-font-family: courier;
-background: #370f29;
-color: #fefefe;
-padding: 5px;
-overflow: hidden;
-height: 17px;
-cursor:text;
-line-height:17px;
+    font-size     : 17px;
+    position      : relative;
+    font-family   : courier;
+    background    : #370f29;
+    color         : #fefefe;
+    padding       : 5px;
+    overflow      : hidden;
+    height        : 17px;
+    cursor        : text;
+    line-height   : 17px;
 }
 
 .cssConsoleDisplay {
-float: left; 
-padding-left: 3px;
-white-space: pre;
+    float         : left; 
+    padding-left  : 3px;
+    white-space   : pre;
 }
 
 .cssConsoleInput {
-position:absolute;
-left:0px;
-top:-30px;
-opacity: 0; 
-filter:alpha(opacity=0);
+    position      : absolute;
+    left          : 0px;
+    top           : -30px;
+    opacity       : 0; 
+    filter        : alpha(opacity=0);
 } 
 
 .cssConsoleCursor {
-float: left;
-background: #fefefe;
-width:8px;
-height:17px;
-margin:0;
-padding:0;
-padding-right:1px;
-padding-left:1px;
-visibility: hidden;
+    float         : left;
+    background    : #fefefe;
+    width         : 8px;
+    height        : 17px;
+    margin        : 0;
+    padding       : 0;
+    padding-right : 1px;
+    padding-left  : 1px;
+    visibility    : hidden;
 }
 
 .cssConsoleDisplay span.selected {
-background: #fefefe;
-color: #370f29;	
+    background    : #fefefe;
+    color         : #370f29;	
 }
 
 .cssConsoleDisplay span {
-height:17px;
-line-height:17px;
-color: #fefefe;	
-margin:0;
-padding:0;
-padding-right:1px;
-padding-left:1px;
-height:17px;
-line-height:17px;
+    height        : 17px;
+    line-height   : 17px;
+    color         : #fefefe;	
+    margin        : 0;
+    padding       : 0;
+    padding-right : 1px;
+    padding-left  : 1px;
+    height        : 17px;
+    line-height   : 17px;
 }
 
 body{
-background: #370f29;
-font-family: courier;
+    background    : #370f29;
+    font-family   : courier;
 }
 
 .container {
-margin: 50px auto;
-height: 600px;
-width: 950px;
-position:relative;
-border:1px solid #fefefe;
+    margin        : 50px auto;
+    height        : 600px;
+    width         : 950px;
+    position      : relative;
+    border        : 1px solid #fefefe;
 }
 
 #input {
-width: 910px;
-display:inline-block;
-position:relative;
-float:left;
+    width         : 910px;
+    display       : inline-block;
+    position      : relative;
+    float         : left;
 }
 
 .bottom {
-position:absolute;
-bottom:5px;
-width: 100%;
+    position      : absolute;
+    bottom        : 5px;
+    width         : 100%;
 }
 
 .label {
-width: 30px;
-position: relative;
-left: 15px;
-top:5px;
-color: #fefefe;
-float:left;
+    width         : 30px;
+    position      : relative;
+    left          : 15px;
+    top           : 5px;
+    color         : #fefefe;
+    float         : left;
 }
 
 .console {
-position:absolute;
-bottom:32px;
-overflow:hidden;
+    position      : absolute;
+    bottom        : 32px;
+    overflow      : hidden;
 }
 
-.white{
-color: #fefefe;
+.white {
+    color         : #fefefe;
 }
 
-.blue{
-color: #81bbd5;
+.blue {
+    color         : #81bbd5;
+}
+
+.red {
+    color         : #802A2A;
 }
 
 .line {
-margin-left: 15px;
-margin-bottom:2px;
+    margin-left   : 15px;
+    margin-bottom : 2px;
 }
 
 .margin {
-margin-left: 40px;
-margin-bottom:2px;
+    margin-left   : 40px;
+    margin-bottom : 2px;
 }

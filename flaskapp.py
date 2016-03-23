@@ -22,33 +22,25 @@ app.config.from_pyfile('flaskapp.cfg')
 
 @app.route('/')
 def index():
-    secret = choice(dat.id2row)
-    return render_template('index.html', secret=secret)
-
-@app.route('/<path:resource>')
-def serveStaticResource(resource):
-    return send_from_directory('static/', resource)
-
-@app.route('/generate/secret')
-def generate_secret():
-    return json(choice(dat.id2row))
-
-@app.route('/definitions/<this>')
-def definitions(this):
-    return json([s.definition() for s in wn.synsets(this)
-                  if s.name().startswith(this+'.n.')])
+    secret      = choice(dat.id2row)
+    definitions = [s.definition() for s in wn.synsets(secret)
+                   if s.name().startswith(secret+'.n.')]
+    return render_template('index.html', secret=secret, definitions=definitions)
 
 @app.route('/guess/<this>/<that>')
 def similarity(this, that):
     return json({
         'similarity' : dat.get_sim(this, that, sim),
         'a_or_an'    : inf.a(that)
-        })
+    })
+
+@app.route('/<path:resource>')
+def serveStaticResource(resource):
+    return send_from_directory('static/', resource)
 
 @app.route('/test')
 def test():
     return "<strong>It's Alive!</strong>"
-
 
 if __name__ == '__main__':
     app.run()
