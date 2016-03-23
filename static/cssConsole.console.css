@@ -116,3 +116,9 @@ body{
     margin-left   : 40px;
     margin-bottom : 2px;
 }
+
+footer {
+    position      : absolute;
+    bottom        : 0;
+    right         : 0;
+}
