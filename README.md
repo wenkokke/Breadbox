@@ -4,19 +4,17 @@
 is a variant of the "popular" game '20 Questions'. The game has two
 players, which we'll call Allie and Blake:
 
-  - Allie thinks of something
+  - Allie thinks of something...
 
   - For the first question, Blake asks *"Is it a breadbox?"*
 
-  - Allie—who obviously wouldn't choose a breadbox—answers *"No, it
-    isn't!"*
+  - Allie—who obviously wouldn't choose a breadbox—answers *"No, it's not."*
 
-From then on, all Blake's questions have to be of the form *"Is it more
-like a breadbox or more like a _____?"*
-If it is, then whatever Blake tried will replace the breadbox in that
-question. If it isn't, then we'll keep stick with the breadbox. A
-typical game will look like this:
-
+From then on, all Blake's questions have to be of the form *"Is it
+more like a breadbox or more like a _____?"* If it is, then whatever
+Blake tried will replace the breadbox in that question. If it isn't,
+then we'll keep stick with the breadbox. A typical game will look like
+this:
 
     Allie: I'm thinking of something...
     Blake: Is it a breadbox?
@@ -45,23 +43,13 @@ typical game will look like this:
 
 To build 'Breadbox' and install the dependencies, run
 
-    make dependencies
-    make build
+    pip install -r requirements.txt
+    pyhon setup.py install
 
-This will take a while, since you'll be downloading a large set of
-semantic vectors. When it's done, you can run the game! It's important
-to start the server first, because you don't want to load several
-gigabytes of data for every run of the game:
+When this has finished, you'll be able to launch the application by
+running
 
-    make serve
-
-When the server has started, you can run the game from the
-command-line using:
-
-    make play
-
-Fairly soon I'll probably implement a small server, so that I can run
-an example of it online.
+    python app.py
 
 ---
 
