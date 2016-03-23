@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="cssConsole.console.css" type="text/css" rel="stylesheet">
+    <script src="jquery.min.js"></script>
+    <script src="cssConsole.min.js"></script>
+    <title>Breadbox</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="console">
+      </div>
+      <div class="bottom">
+	<div class="label">></div>
+	<div id="input"></div>
+      </div>
+    </div>
+    <script>
+      var lineLimit            = 28;
+      var secret               = {{ secret | tojson | safe }};
+      var current              = 'breadbox';
+      var current_sim          = 0.0;
+      var current_with_article = 'a breadbox';
+
+      $(document).ready(function() {
+          $('#input').find('input').focus();
+
+          addLine("I'm thinking of something...",'line','blue');
+          addLine("Is it a breadbox?",'line','white');
+          addLine("No, it's not.",'line','blue');
+      });
+
+      $('#input').cssConsole({
+          inputName:'console',
+          charLimit: 60,
+          onEnter: function(){
+              execCommand($('#input').find('input').val(),function() {
+                  $('#input').cssConsole('reset');
+                  $('#input').find('input').focus();
+              });
+          }
+      });
+
+      function article(word,startswith_vowel) {
+          if (startswith_vowel) {
+              return "an "+word;
+          } else {
+              return "a "+word;
+          }
+      }
+
+      $('.container').on('click', function() {
+      	  $('#input').find('input').focus();
+      });
+
+      function addLine(input, style, color) {
+          if($('.console div').length==lineLimit) {
+              $('.console div').eq(0).remove();
+          }
+          style = typeof style !== 'undefined' ? style : 'line';
+          color = typeof color !== 'undefined' ? color : 'white';
+          $('.console').append('<div class="'+style+' '+color+'">'+input+'</div>');
+      }
+
+      function execCommand(input,success){
+          var input = input.replace(/[!?\.\\/,:;]/g,'').split(' ');
+          var next  = input[input.length - 1];
+          $.getJSON('/guess/'+secret+'/'+next,function(data) {
+              var next_sim          = data['similarity'];
+              var next_with_article = data['a_or_an'];
+
+              addLine("Is it more like "+current_with_article+
+                      " or more like "+next_with_article+"?",'line','white');
+
+              if (next == current) {
+              }
+              else if (next_sim > current_sim) {
+                  addLine("It's more like "+next_with_article+"!",'line','blue');
+                  current                  = next;
+                  current_sim              = next_sim;
+                  current_startswith_vowel = next_with_article;
+                  success();
+              }
+              else if (next_sim <= current_sim) {
+                  addLine("It's more like "+current_with_article+"...",'line','blue');
+                  success();
+              }
+          });
+      }
+    </script>
+  </body>
+</html>
