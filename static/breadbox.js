@@ -3,40 +3,40 @@ var current_sim          = 0.0;
 var current_with_article = 'a breadbox';
 
 $(document).ready(function() {
-    $('#input').find('input').focus();
+    $('#breadbox-input').find('input').focus();
 
     addLine("I'm thinking of something...",'line','blue');
     addLine("Is it a breadbox?",'line','white');
     addLine("No, it's not.",'line','blue');
 });
 
-$('#input').cssConsole({
+$('#breadbox-input').cssConsole({
     inputName:'console',
     charLimit: 60,
     onEnter: function(){
-        execCommand($('#input').find('input').val(),
+        execCommand($('#breadbox-input').find('input').val(),
                     function() {
-                        $('#input').cssConsole('reset');
-                        $('#input').find('input').focus();
+                        $('#breadbox-input').cssConsole('reset');
+                        $('#breadbox-input').find('input').focus();
                     },
                     function() {
-                        $('#input').cssConsole('destroy');
-                        $('.label').remove();
+                        $('#breadbox-input').cssConsole('destroy');
+                        $('.breadbox-label').remove();
                     });
     }
 });
 
-$('.container').on('click', function() {
-    $('#input').find('input').focus();
+$('.breadbox-container').on('click', function() {
+    $('#breadbox-input').find('input').focus();
 });
 
 function addLine(input, style, color) {
-    if($('.console div').length==lineLimit) {
-        $('.console div').eq(0).remove();
+    if($('.breadbox-console div').length==lineLimit) {
+        $('.breadbox-console div').eq(0).remove();
     }
     style = typeof style !== 'undefined' ? style : 'line';
     color = typeof color !== 'undefined' ? color : 'white';
-    $('.console').append('<div class="'+style+' '+color+'">'+input+'</div>');
+    $('.breadbox-console').append('<div class="breadbox-'+style+' breadbox-'+color+'">'+input+'</div>');
 }
 
 function execCommand(input,cont,stop) {
