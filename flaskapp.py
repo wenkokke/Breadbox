@@ -6,14 +6,20 @@ Created on Mar 22, 2016
 from composes.semantic_space.space import Space
 from composes.similarity.cos       import CosSimilarity
 from composes.utils                import io_utils
-from flask                         import Flask, render_template, send_from_directory
-from inflect                       import engine  as ie
+from flask                         import *
+from inflect                       import engine
 from json                          import dumps   as json
 from nltk.corpus                   import wordnet as wn
 from random                        import choice
 
 
-inf = ie()
+origins = ['http://127.0.0.1:4000'
+           ,'https://127.0.0.1:4000'
+           ,'http://pepijnkokke.github.io'
+           ,'https://pepijnkokke.github.io']
+
+
+inflect = engine()
 sim = CosSimilarity()
 dat = io_utils.load('corpora/composes.pkl')
 app = Flask(__name__)
@@ -23,7 +29,7 @@ app.config.from_pyfile('flaskapp.cfg')
 @app.route('/')
 def index():
     secret              = choice(dat.id2row)
-    secret_with_article = inf.a(secret)
+    secret_with_article = inflect.a(secret)
     definitions         = [s.definition() for s in wn.synsets(secret)
                    if s.name().startswith(secret+'.n.')]
     return render_template('index.html'
@@ -33,10 +39,30 @@ def index():
 
 @app.route('/guess/<this>/<that>')
 def similarity(this, that):
-    return json({
-        'similarity' : dat.get_sim(this, that, sim),
-        'a_or_an'    : inf.a(that)
-    })
+    origin = request.headers.get('origin')
+    if origin is None or origin in origins:
+        resp = Response(json({
+            'similarity' : dat.get_sim(this, that, sim),
+            'a_or_an'    : inflect.a(that)
+        }))
+        resp.headers['Access-Control-Allow-Origin'] = origin
+        return resp
+    return ''
+
+@app.route('/generate/secret')
+def generate_secret():
+    origin = request.headers.get('origin')
+    if origin is None or origin in origins:
+        secret              = choice(dat.id2row)
+        secret_with_article = inflect.a(secret)
+        definitions         = [s.definition() for s in wn.synsets(secret)
+                               if s.name().startswith(secret+'.n.')]
+        resp = Response(json({'secret': secret
+                              ,'secret_with_article': secret_with_article
+                              ,'definitions': definitions}))
+        resp.headers['Access-Control-Allow-Origin'] = origin
+        return resp
+    return ''
 
 @app.route('/<path:resource>')
 def serveStaticResource(resource):

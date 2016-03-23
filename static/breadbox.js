@@ -73,27 +73,32 @@ function execCommand(input,cont,stop) {
         var input = input.replace(/[!?\.\\/,:;]/g,'').split(' ');
         var next  = input[input.length - 1];
 
-        $.getJSON('/guess/'+secret+'/'+next,function(data) {
-            var next_sim          = data['similarity'];
-            var next_with_article = data['a_or_an'];
+        $.ajax({
+            url         : breadbox_url+'guess/'+secret+'/'+next,
+            type        : "GET",
+            dataType    : "json",
+            success     : function(data) {
+                var next_sim          = data['similarity'];
+                var next_with_article = data['a_or_an'];
 
-            addLine("Is it more like "+current_with_article+
-                    " or more like "+next_with_article+"?",'line','white');
+                addLine("Is it more like "+current_with_article+
+                        " or more like "+next_with_article+"?",'line','white');
 
-            if (next == secret) {
-                addLine("That's <i>exactly</i> what I was thinking of!",'line','blue');
-                stop();
-            }
-            else if (next_sim > current_sim) {
-                addLine("It's more like "+next_with_article+"!",'line','blue');
-                current              = next;
-                current_sim          = next_sim;
-                current_with_article = next_with_article;
-                cont();
-            }
-            else if (next_sim <= current_sim) {
-                addLine("It's more like "+current_with_article+"...",'line','blue');
-                cont();
+                if (next == secret) {
+                    addLine("That's <i>exactly</i> what I was thinking of!",'line','blue');
+                    stop();
+                }
+                else if (next_sim > current_sim) {
+                    addLine("It's more like "+next_with_article+"!",'line','blue');
+                    current              = next;
+                    current_sim          = next_sim;
+                    current_with_article = next_with_article;
+                    cont();
+                }
+                else if (next_sim <= current_sim) {
+                    addLine("It's more like "+current_with_article+"...",'line','blue');
+                    cont();
+                }
             }
         });
     }
