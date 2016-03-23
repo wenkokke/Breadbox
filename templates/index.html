@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <link href="cssConsole.console.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="jquery.min.js"></script>
+    <!-- I use cssConsole: https://github.com/michalkow/cssConsole -->
     <script type="text/javascript" src="cssConsole.min.js"></script>
     <title>Breadbox</title>
   </head>
@@ -23,14 +24,15 @@
       </div>
     </div>
     <script>
-      var lineLimit           = 28;
+      var lineLimit           = 26;
       var secret              = {{ secret | tojson | safe }};
       var secret_with_article = {{ secret_with_article | tojson | safe }};
       var definitions         = {{ definitions | tojson | safe }};
     </script>
     <script type="text/javascript" src="breadbox.js"></script>
     <footer class="white">
-      Copyright &copy; 2016 Pepijn Kokke
+      Copyright &copy; 2016
+      <a class="white" href="https://pepijnkokke.github.io/">Pepijn Kokke</a>
     </footer>
   </body>
 </html>
