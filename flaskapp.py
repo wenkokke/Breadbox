@@ -6,7 +6,7 @@ Created on Mar 22, 2016
 from composes.semantic_space.space import Space
 from composes.similarity.cos       import CosSimilarity
 from composes.utils                import io_utils
-from flask                         import Flask
+from flask                         import Flask, render_template
 from json                          import dumps as json
 from random                        import choice
 from nltk.corpus                   import wordnet as wn
@@ -17,6 +17,11 @@ sim = CosSimilarity()
 dat = io_utils.load('corpora/composes.pkl')
 app = Flask(__name__)
 app.config.from_pyfile('flaskapp.cfg')
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 
 @app.route('/generate/secret')
@@ -43,7 +48,7 @@ def startswith_vowel(this):
 
 
 @app.route('/test')
-def index():
+def test():
     return "<strong>It's Alive!</strong>"
 
 
