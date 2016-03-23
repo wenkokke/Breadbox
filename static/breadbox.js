@@ -50,7 +50,7 @@ function execCommand(input,cont,stop) {
     } else if (input.indexOf("give up") != -1) {
 
         addLine("I give up! What is it?",'line','white');
-        reply = "I was thinking of '"+secret+"'... "
+        reply = "I was thinking of "+secret_with_article+"... "
         if (definitions.length > 1) {
             addLine(reply+"It's",'line','blue');
             $(definitions).each(function(index,item) {

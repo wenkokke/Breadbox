@@ -23,9 +23,10 @@
       </div>
     </div>
     <script>
-      var lineLimit   = 28;
-      var secret      = {{ secret | tojson | safe }};
-      var definitions = {{ definitions | tojson | safe }};
+      var lineLimit           = 28;
+      var secret              = {{ secret | tojson | safe }};
+      var secret_with_article = {{ secret_with_article | tojson | safe }};
+      var definitions         = {{ definitions | tojson | safe }};
     </script>
     <script type="text/javascript" src="breadbox.js"></script>
   </body>

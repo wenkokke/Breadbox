@@ -22,10 +22,14 @@ app.config.from_pyfile('flaskapp.cfg')
 
 @app.route('/')
 def index():
-    secret      = choice(dat.id2row)
-    definitions = [s.definition() for s in wn.synsets(secret)
+    secret              = choice(dat.id2row)
+    secret_with_article = inf.a(secret)
+    definitions         = [s.definition() for s in wn.synsets(secret)
                    if s.name().startswith(secret+'.n.')]
-    return render_template('index.html', secret=secret, definitions=definitions)
+    return render_template('index.html'
+                           ,secret              = secret
+                           ,secret_with_article = secret_with_article
+                           ,definitions         = definitions)
 
 @app.route('/guess/<this>/<that>')
 def similarity(this, that):
