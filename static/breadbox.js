@@ -39,10 +39,15 @@ function addLine(input, style, color) {
     $('.console').append('<div class="'+style+' '+color+'">'+input+'</div>');
 }
 
-function execCommand(input,cont,stop){
+function execCommand(input,cont,stop) {
     var input = input.trim();
 
-    if (input.indexOf("give up") != -1) {
+    if (input == "help") {
+
+        help();
+        cont();
+
+    } else if (input.indexOf("give up") != -1) {
 
         addLine("I give up! What is it?",'line','white');
         reply = "I was thinking of '"+secret+"'... "
@@ -92,4 +97,34 @@ function execCommand(input,cont,stop){
             }
         });
     }
+}
+
+function help() {
+    addLine("&nbsp;");
+    addLine("Breadbox is an experimental cousin of 20 Questions, "+
+            "also known as Plenty Questions, which is played by two "+
+            "or more players. In this case, it's you against the computer! "+
+            "It's played as follows:",'margin','blue');
+    addLine("&nbsp;");
+    addLine("&nbsp;&nbsp;&bull;&nbsp;The computer thinks of a word (I already did this!)"
+            ,'margin','blue');
+    addLine("&nbsp;&nbsp;&bull;&nbsp;As your first question, you <i>have to ask</i>"+
+            " \"Is it a breadbox?\"",'margin','blue');
+    addLine("&nbsp;&nbsp;&bull;&nbsp;Obviously, I wouldn't have chosen a breadbox, "+
+            "so I say \"No, it's not.\"",'margin','blue');
+    addLine("&nbsp;");
+    addLine("From then on, all your questions have to be of the form..."
+            ,'margin','blue');
+    addLine("&nbsp;");
+    addLine("&nbsp;&nbsp;&nbsp;&nbsp;Is it more like a <i>breadbox</i>, "+
+            "or more like...?",'margin','white');
+    addLine("&nbsp;");
+    addLine("...where <i>breadbox</i> replaced with is whatever your current guess is.",
+            'margin','blue');
+    addLine("&nbsp;");
+    addLine("And remember, you can always type 'give up', and I'll tell you what I "+
+            "was thinking of! ^^",'margin','blue');
+    addLine("Once you win (or give up), just reload the page to play another game.",
+            'margin','blue');
+    addLine("&nbsp;");
 }
