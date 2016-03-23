@@ -77,9 +77,9 @@
               }
               else if (next_sim > current_sim) {
                   addLine("It's more like "+next_with_article+"!",'line','blue');
-                  current                  = next;
-                  current_sim              = next_sim;
-                  current_startswith_vowel = next_with_article;
+                  current              = next;
+                  current_sim          = next_sim;
+                  current_with_article = next_with_article;
                   success();
               }
               else if (next_sim <= current_sim) {
