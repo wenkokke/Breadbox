@@ -12,8 +12,8 @@ class Install(_install):
 setup(name='Breadbox',
       version          ='1.0',
       description      ='Implementation of "Breadbox" or "Plenty Questions".',
-      author           ='Pepijn Kokke',
-      author_email     ='pepijn.kokke@gmail.com',
+      author           ='Wen Kokke',
+      author_email     ='wen.kokke@gmail.com',
       url              ='http://www.python.org/sigs/distutils-sig/',
       cmdclass         ={'install': Install},
       install_requires =['Flask>=0.10.1','future','names','enum','numpy','scipy'
