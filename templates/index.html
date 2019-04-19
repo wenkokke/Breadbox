@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <link href="cssConsole.console.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="jquery.min.js"></script>
-    <!-- I use cssConsole: https://github.com/michalkow/cssConsole -->
     <script type="text/javascript" src="cssConsole.min.js"></script>
     <title>Breadbox</title>
   </head>
@@ -23,7 +22,7 @@
 	<div id="breadbox-input"></div>
       </div>
     </div>
-    <script>
+    <script type="text/javascript">
       var lineLimit           = 26;
       var breadbox_url        = '/';
       var secret              = {{ secret | tojson | safe }};
@@ -33,7 +32,7 @@
     <script type="text/javascript" src="breadbox.js"></script>
     <footer class="breadbox-white">
       Copyright &copy; 2016
-      <a class="breadbox-white" href="https://pepijnkokke.github.io/">Pepijn Kokke</a>
+      <a class="breadbox-white" href="https://wenkokke.github.io/">Wen Kokke</a>
     </footer>
   </body>
 </html>
