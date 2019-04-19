@@ -63,3 +63,6 @@ def new_secret():
         'secret_with_article': secret_with_article,
         'definitions': definitions,
     }
+
+if __name__ == "__main__":
+    app.run()

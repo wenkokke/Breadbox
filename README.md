@@ -1,58 +1,37 @@
-# Breadbox
+# Flask Sample Application
 
-'Breadbox' is an implementation of the game 'Plenty Questions', which
-is a variant of the "popular" game '20 Questions'. The game has two
-players, which we'll call Allie and Blake:
+This repository provides a sample Python web application implemented using the Flask web framework and hosted using ``gunicorn``. It is intended to be used to demonstrate deployment of Python web applications to OpenShift 3.
 
-  - Allie thinks of something...
+## Implementation Notes
 
-  - For the first question, Blake asks *"Is it a breadbox?"*
+This sample Python application relies on the support provided by the default S2I builder for deploying a WSGI application using the ``gunicorn`` WSGI server. The requirements which need to be satisfied for this to work are:
 
-  - Allie—who obviously wouldn't choose a breadbox—answers *"No, it's not."*
+* The WSGI application code file needs to be named ``wsgi.py``.
+* The WSGI application entry point within the code file needs to be named ``application``.
+* The ``gunicorn`` package must be listed in the ``requirements.txt`` file for ``pip``.
 
-From then on, all Blake's questions have to be of the form *"Is it
-more like a breadbox or more like a _____?"* If it is, then whatever
-Blake tried will replace the breadbox in that question. If it isn't,
-then we'll keep stick with the breadbox. A typical game will look like
-this:
+In addition, the ``.s2i/environment`` file has been created to allow environment variables to be set to override the behaviour of the default S2I builder for Python.
 
-    Allie: I'm thinking of something...
-    Blake: Is it a breadbox?
-    Allie: No, it's not.
-    Blake: Is it more like a breadbox or more like a dog?
-    Allie: It's more like a dog...
-    Blake: Is it more like a dog or more like a cat?
-    Allie: It's more like a cat...
-    Blake: Is it more like a cat or more like a unicorn?
-    Allie: It's more like a cat...
-    Blake: Is it more like a cat or more like a garden?
-    Allie: It's more like a garden...
-    Blake: Is it more like a garden or more like a house?
-    Allie: It's more like a house...
-    Blake: Is it more like a house or more like a friend?
-    Allie: It's more like a friend...
-    Blake: Is it more like a friend or more like a lover?
-    Allie: It's more like a friend...
-    Blake: Is it more like a friend or more like a relative?
-    Allie: It's more like a friend...
-    Blake: Is it more like a friend or more like a neighbour?
-    Allie: That's exactly what I was thinking of!
+* The environment variable ``APP_CONFIG`` has been set to declare the name of the config file for ``gunicorn``.
 
+## Deployment Steps
 
-# Install & Run
+To deploy this sample Python web application from the OpenShift web console, you should select ``python:2.7``, ``python:3.3``, ``python:3.4`` or ``python:latest``, when using _Add to project_. Use of ``python:latest`` is the same as having selected the most up to date Python version available, which at this time is ``python:3.4``.
 
-To build 'Breadbox' and install the dependencies, run
+The HTTPS URL of this code repository which should be supplied to the _Git Repository URL_ field when using _Add to project_ is:
 
-    pip install -r requirements.txt
-    pyhon setup.py install
+* https://github.com/OpenShiftDemos/os-sample-python.git
 
-When this has finished, you'll be able to launch the application by
-running
+If using the ``oc`` command line tool instead of the OpenShift web console, to deploy this sample Python web application, you can run:
 
-    python app.py
+```
+oc new-app https://github.com/OpenShiftDemos/os-sample-python.git
+```
 
----
+In this case, because no language type was specified, OpenShift will determine the language by inspecting the code repository. Because the code repository contains a ``requirements.txt``, it will subsequently be interpreted as including a Python application. When such automatic detection is used, ``python:latest`` will be used.
 
+If needing to select a specific Python version when using ``oc new-app``, you should instead use the form:
 
-Thanks to [UnicornPower](https://github.com/UnicornPower) for
-introducing me to the game! :)
+```
+oc new-app python:2.7~https://github.com/OpenShiftDemos/os-sample-python.git
+```
