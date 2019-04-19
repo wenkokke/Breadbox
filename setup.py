@@ -14,5 +14,5 @@ setup(name='Breadbox',
       author_email     ='wen.kokke@gmail.com',
       url              ='http://www.python.org/sigs/distutils-sig/',
       cmdclass         ={'install': Install},
-      install_requires =['flask>=1.0.2','gensim>=3.7.2','inflect>=2.1.0','nltk>=3.3']
+      install_requires =['flask>=1.0.2','gensim>=3.7.2','inflect>=2.1.0','nltk>=3.3'],
       setup_requires   =['nltk'])
