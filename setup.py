@@ -3,9 +3,29 @@ from setuptools.command.install import install as _install
 
 class Install(_install):
     def run(self):
-        _install.do_egg_install(self)
-        import nltk
-        nltk.download('wordnet')
+        if not self.dry_run:
+            _install.do_egg_install(self)
+
+            # download 'wordnet'
+            import nltk
+            nltk.download('wordnet')
+
+            # create 'data' directory
+            import os
+            if not os.path.isdir('data'):
+                os.mkdir('data')
+
+            # download 'GoogleNews SLIM'
+            from urllib.request import urlopen
+            url = "https://github.com/eyaler/word2vec-slim/raw/master/GoogleNews-vectors-negative300-SLIM.bin.gz"
+            resp = urlopen(url)
+            CHUNK = 16 * 1024
+            with open('data/GoogleNews-vectors-negative300-SLIM.bin.gz','wb') as f:
+                while True:
+                    chunk = resp.read(CHUNK)
+                    if not chunk:
+                        break
+                    f.write(chunk)
 
 setup(name='Breadbox',
       version          ='2.0',
