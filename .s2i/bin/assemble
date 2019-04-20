@@ -5,5 +5,4 @@ ls -al
 pwd
 echo $HOME
 ls /tmp
-ls /tmp/s2i
-ls /tmp/s2i/src
+ls /tmp/src
