@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# run the application
+python ${HOME}/src/wsgi.py
