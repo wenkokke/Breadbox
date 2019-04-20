@@ -16,7 +16,7 @@ mv /tmp/s2i/src ${HOME}/src
 pushd ${HOME}
 
 # download 'GoogleNews SLIM'
-wget https://github.com/eyaler/word2vec-slim/raw/master/GoogleNews-vectors-negative300-SLIM.bin.gz -O GoogleNews-vectors-negative300-SLIM.bin.gz
+wget -q https://github.com/eyaler/word2vec-slim/raw/master/GoogleNews-vectors-negative300-SLIM.bin.gz -O GoogleNews-vectors-negative300-SLIM.bin.gz
 
 # install app
 python ${HOME}/setup.py install
