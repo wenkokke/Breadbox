@@ -3,7 +3,3 @@ APP_VERSION=2.0
 
 # download 'GoogleNews SLIM'
 wget https://github.com/eyaler/word2vec-slim/raw/master/GoogleNews-vectors-negative300-SLIM.bin.gz -O GoogleNews-vectors-negative300-SLIM.bin.gz
-
-# download 'WordNet'
-python setup.py install
-python -m nltk.downloader wordnet
