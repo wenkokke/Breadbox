@@ -2,7 +2,7 @@
 APP_VERSION=2.0
 
 # download 'GoogleNews SLIM'
-wget https://github.com/eyaler/word2vec-slim/raw/master/GoogleNews-vectors-negative300-SLIM.bin.gz -O $HOME/GoogleNews-vectors-negative300-SLIM.bin.gz
+wget -q https://github.com/eyaler/word2vec-slim/raw/master/GoogleNews-vectors-negative300-SLIM.bin.gz -O $HOME/GoogleNews-vectors-negative300-SLIM.bin.gz
 
 # move application source
 mv /tmp/src/* $HOME
