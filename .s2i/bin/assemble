@@ -1,6 +1,9 @@
 #!/bin/sh
 APP_VERSION=2.0
 
+ls -al
+pwd
+
 # restore build artifacts
 if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
     mv /tmp/artifacts/* ${HOME}/.
