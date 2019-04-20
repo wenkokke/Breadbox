@@ -9,6 +9,7 @@ mv /tmp/src/* $HOME
 
 # install the application
 pushd $HOME
+pip install cython
 python setup.py install
 
 # return
