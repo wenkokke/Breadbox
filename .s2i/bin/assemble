@@ -3,24 +3,7 @@ APP_VERSION=2.0
 
 ls -al
 pwd
-
-# restore build artifacts
-if [ "$(ls /tmp/artifacts/ 2>/dev/null)" ]; then
-    mv /tmp/artifacts/* ${HOME}/.
-fi
-
-# move the application source
-mv /tmp/s2i/src ${HOME}/src
-
-# build application artifacts
-pushd ${HOME}
-
-# download 'GoogleNews SLIM'
-wget -q https://github.com/eyaler/word2vec-slim/raw/master/GoogleNews-vectors-negative300-SLIM.bin.gz -O GoogleNews-vectors-negative300-SLIM.bin.gz
-
-# install app
-python ${HOME}/setup.py install
-
-# install the artifact
-popd
-
+echo $HOME
+ls /tmp
+ls /tmp/s2i
+ls /tmp/s2i/src
