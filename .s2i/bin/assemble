@@ -16,7 +16,7 @@ pushd ${HOME}
 wget https://github.com/eyaler/word2vec-slim/raw/master/GoogleNews-vectors-negative300-SLIM.bin.gz -O GoogleNews-vectors-negative300-SLIM.bin.gz
 
 # install app
-python ${HOME}/src/setup.py install
+python ${HOME}/setup.py install
 
 # install the artifact
 popd
