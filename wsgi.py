@@ -13,25 +13,6 @@ import os
 import random
 import urllib.request
 
-# download 'wordnet'
-nltk.download('wordnet')
-
-# download 'GoogleNews SLIM'
-print('[googlenews_data] Downloading GoogleNews vectors SLIM')
-data_file = 'GoogleNews-vectors-negative300-SLIM.bin.gz'
-data_url = "https://github.com/eyaler/word2vec-slim/raw/master/{}".format(data_file)
-if os.path.isfile(data_file):
-    print('[googlenews_data]   GoogleNews vectors SLIM already up-to-date!')
-else:
-    chunk_size = 16 * 1024
-    resp = urllib.request.urlopen(data_url)
-    with open(data_file, 'wb') as f:
-        while True:
-            chunk = resp.read(chunk_size)
-            if not chunk:
-                break
-            f.write(chunk)
-
 # set allowed origins
 allowed_origins = ['http://127.0.0.1:5000', 'https://127.0.0.1:5000',
                    'http://wenkokke.github.io', 'https://wenkokke.github.io',]
