@@ -19,6 +19,7 @@ allowed_origins = ['http://127.0.0.1:5000', 'https://127.0.0.1:5000',
 
 # load app and data
 app = flask.Flask(__name__)
+data_file = 'GoogleNews-vectors-negative300-SLIM.bin.gz'
 model = gensim.models.KeyedVectors.load_word2vec_format(data_file, binary=True)
 vocab = list(model.vocab.keys())
 inflect = inflect.engine()
