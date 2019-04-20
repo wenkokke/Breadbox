@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# run the application
-python ${HOME}/app.py
