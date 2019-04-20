@@ -65,4 +65,5 @@ def new_secret():
     }
 
 if __name__ == "__main__":
-    app.run()
+    PORT = int(os.environ.get('OPENSHIFT_PYTHON_PORT', 8080))
+    app.run(host='0.0.0.0', port=PORT)
