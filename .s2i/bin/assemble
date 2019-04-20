@@ -1,8 +1,15 @@
 #!/bin/sh
 APP_VERSION=2.0
 
-ls -al
-pwd
-echo $HOME
-ls /tmp
-ls /tmp/src
+# download 'GoogleNews SLIM'
+wget https://github.com/eyaler/word2vec-slim/raw/master/GoogleNews-vectors-negative300-SLIM.bin.gz -O $HOME/GoogleNews-vectors-negative300-SLIM.bin.gz
+
+# move application source
+mv /tmp/src/* $HOME
+
+# install the application
+pushd $HOME
+python setup.py install
+
+# return
+popd
