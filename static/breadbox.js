@@ -62,7 +62,9 @@ function execCommand(input,cont,stop) {
             });
         } else if (definitions.length == 1) {
             addLine(reply+"It's "+definitions[0]+".",'line','blue');
-        }
+        } else if (definitions.length == 0) {
+            addLine(reply,'line','blue'); 
+        }       
         stop();
 
     } else {
