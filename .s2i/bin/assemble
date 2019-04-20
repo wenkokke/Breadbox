@@ -9,8 +9,8 @@ mv /tmp/src/* $HOME
 
 # install the application
 pushd $HOME
-pip install cython
-python setup.py install
+python -m pip install --user cython numpy flask gensim inflect nltk
+python -m nltk.downloader wordnet
 
 # return
 popd
