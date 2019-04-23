@@ -42,7 +42,7 @@ def guess(this, that):
 
 @app.route('/generate/secret')
 def generate_secret():
-    origin = request.headers.get('origin')
+    origin = flask.request.headers.get('origin')
     if origin is None or origin in allowed_origins:
         resp = Response(json(new_secret()))
         resp.headers['Access-Control-Allow-Origin'] = origin
