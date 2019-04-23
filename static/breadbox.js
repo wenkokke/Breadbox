@@ -50,7 +50,7 @@ function execCommand(input,cont,stop) {
     } else if (input.indexOf("give up") != -1) {
 
         addLine("I give up! What is it?",'line','white');
-        reply = "I was thinking of "+secret_with_article+"... "
+        reply = "I was thinking of "+secret_with_article+"... ";
         if (definitions.length > 1) {
             addLine(reply+"It's",'line','blue');
             $(definitions).each(function(index,item) {
@@ -63,8 +63,8 @@ function execCommand(input,cont,stop) {
         } else if (definitions.length == 1) {
             addLine(reply+"It's "+definitions[0]+".",'line','blue');
         } else if (definitions.length == 0) {
-            addLine(reply,'line','blue'); 
-        }       
+            addLine(reply,'line','blue');
+        }
         stop();
 
     } else {
